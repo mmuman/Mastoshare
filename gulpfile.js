@@ -27,6 +27,17 @@ gulp.task('buildChrome', function(){
 	.pipe(gulp.dest('build/chrome'))
 });
 
+gulp.task('pack', function(){
+
+	gulp.src('build/firefox/**/*')
+		.pipe(zip('firefox.zip'))
+		.pipe(gulp.dest('build'))
+
+	gulp.src('build/chrome/**/*')
+		.pipe(zip('chrome.zip'))
+		.pipe(gulp.dest('build'))
+});
+
 gulp.task('build', [
 		'buildFirefox',
 		'buildChrome'
