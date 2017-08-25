@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var zip = require('gulp-zip');
 var watch = require('gulp-watch');
+var preprocess = require('gulp-preprocess');
 
 gulp.task('default',[
 	'buildCommon',
@@ -8,7 +9,7 @@ gulp.task('default',[
 ]);
 
 gulp.task('watch', function(){
-	return watch('Common/**/*', {verbose: true})
+	return watch('src/**/*', {verbose: true})
 	.pipe(gulp.dest('MastoShareFirefox'))
 	.pipe(gulp.dest('MastoShareChrome'))
 });
