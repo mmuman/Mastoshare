@@ -1,7 +1,9 @@
+/* @if DEST='firefox' */
 body{
 	background:transparent;
 }
 
+/* @endif */
 input{
 	padding:5px;
 }

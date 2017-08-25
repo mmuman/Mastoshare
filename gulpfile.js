@@ -3,30 +3,32 @@ var zip = require('gulp-zip');
 var watch = require('gulp-watch');
 var preprocess = require('gulp-preprocess');
 
-gulp.task('default',[
-	'buildCommon',
-	'watch'
-]);
+gulp.task('default', ['build', 'watch']);
 
 gulp.task('watch', function(){
-	return watch('src/**/*', {verbose: true})
-	.pipe(gulp.dest('MastoShareFirefox'))
-	.pipe(gulp.dest('MastoShareChrome'))
+	watch('src/**/*', {verbose: true})
+	.pipe(preprocess({context: {DEST: 'firefox'}}))
+	.pipe(gulp.dest('build/firefox'))
+
+	watch('src/**/*')
+	.pipe(preprocess({context: {DEST: 'chrome'}}))
+	.pipe(gulp.dest('build/chrome'))
 });
 
-gulp.task('buildCommon', function(){
-	gulp.src('Common/**/*')
-	.pipe(gulp.dest('MastoShareFirefox'))
-	.pipe(gulp.dest('MastoShareChrome'))
+gulp.task('buildFirefox', function(){
+	gulp.src('src/**/*')
+	.pipe(preprocess({context: {DEST: 'firefox'}}))
+	.pipe(gulp.dest('build/firefox'))
 });
 
-gulp.task('pack', function(){
-
-	gulp.src('MastoShareFirefox/**/*')
-		.pipe(zip('MastoShareFirefox.zip'))
-		.pipe(gulp.dest('.'))
-
-	gulp.src('MastoShareChrome/**/*')
-		.pipe(zip('MastoShareChrome.zip'))
-		.pipe(gulp.dest('.'))
+gulp.task('buildChrome', function(){
+	gulp.src('src/**/*')
+	.pipe(preprocess({context: {DEST: 'chrome'}}))
+	.pipe(gulp.dest('build/chrome'))
 });
+
+gulp.task('build', [
+		'buildFirefox',
+		'buildChrome'
+	]
+);
