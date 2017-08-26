@@ -44,7 +44,7 @@ function manifestor(browser){
     };
 
     if (browser == 'firefox') {
-        manifest.application = {
+        manifest.applications = {
             "gecko":{
               "id": "{09b14d46-21c3-4a7d-b244-e756f497935b}",
               "strict_min_version": "52.0"
