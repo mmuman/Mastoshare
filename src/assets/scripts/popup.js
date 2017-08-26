@@ -100,4 +100,4 @@ setInterval(function(){
     } else {
         btnToot.disabled = false;
     }
-},1000);
+},500);

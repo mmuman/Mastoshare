@@ -6,9 +6,6 @@ function manifestor(browser){
         "name": 'Mastodon Share',
         "description": 'Un bouton de partage social pour les instances Mastodon',
         "version": '0.4',
-        "options_ui": {
-            "page": 'options.html'
-        },
         "browser_action": {
             "default_icon": "assets/images/icon.png",
             "default_popup": "popup.html"
@@ -50,6 +47,13 @@ function manifestor(browser){
               "strict_min_version": "52.0"
             }
         }
+
+        manifest.options_ui = {
+            "page": 'options.html'
+        }
+
+    } else if(browser == 'chrome') {
+        manifest.options_page = 'options.html';
     }
 
     var result = JSON.stringify(manifest, null , 4);

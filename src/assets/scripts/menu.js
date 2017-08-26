@@ -11,7 +11,7 @@ function createMenuItem(items){
 }
 
 function shareSelection() {
-	browser.tabs.executeScript({
+	chrome.tabs.executeScript({
 		code: "window.getSelection().toString()"
 	}, function(selection) {
 		chrome.tabs.query({active: true}, function(tabs) {
