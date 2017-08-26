@@ -2,4 +2,6 @@
 .vscode
 *.zip
 node_modules
-build
+build/*
+!build/firefox/manifest.json
+!build/chrome/manifest.json
