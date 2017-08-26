@@ -73,8 +73,13 @@ gulp.task('pack', function(){
 	.pipe(gulp.dest('build'))
 });
 
+gulp.task('manifestor', function(){
+	cp.fork('manifestor.js');
+});
+
 gulp.task('build', [
 	'buildFirefox',
-	'buildChrome'
+	'buildChrome',
+	'manifestor'
 	]
 );
